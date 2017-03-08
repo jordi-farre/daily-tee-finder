@@ -1,0 +1,25 @@
+{
+  "name": "daily-tee-finder",
+  "version": "1.0.0",
+  "description": "Search daily t-shirt information from different sources and stores this information on a DynamoDB database.",
+  "main": "index.js",
+  "dependencies": {
+    "sinon": "^1.17.7"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jordifr-dev/daily-tee-finder.git"
+  },
+  "author": "Jordi Farré",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jordifr-dev/daily-tee-finder/issues"
+  },
+  "homepage": "https://github.com/jordifr-dev/daily-tee-finder#readme"
+}
