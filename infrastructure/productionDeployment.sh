@@ -7,7 +7,7 @@ configure() {
 }
 
 createPackage() {
-	zip -r ${FILE_NAME} .
+	zip -r ${FILE_NAME} . -x *.git* -x *infrastructure* -x circle.yml
 }
 
 uploadArtifactS3() {
