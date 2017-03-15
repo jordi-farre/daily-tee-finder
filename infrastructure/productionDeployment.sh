@@ -1,6 +1,11 @@
 
 #!/bin/sh
 
+configure() {
+	aws configure set default.region us-east-1
+	aws configure set output json
+}
+
 createPackage() {
 	zip -r ${FILE_NAME} .
 }
@@ -21,6 +26,7 @@ createLambdaFunction() {
 FILE_NAME="dailyTeeFinder.zip"
 FUNCTION_NAME="dailyTeeFinder"
 S3_BUCKET="daily-tee-finder-deployment"
+configure
 createPackage
 uploadArtifactS3
 rm ${FILE_NAME}
