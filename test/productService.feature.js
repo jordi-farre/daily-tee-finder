@@ -10,10 +10,6 @@ var gateway = new QwerteeGateway();
 var gatewayFetchStub = sinon.stub(gateway, "fetch").returns([product]);
 var repository = new ProductRepository();
 var repositorySaveStub = sinon.stub(repository, "save");
-var statusCode;
-var callback = function(error, response) {
-	statusCode = response.statusCode;
-}
 var productService = new ProductService();
 
 
