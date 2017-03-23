@@ -7,23 +7,22 @@ const QwerteeGateway = require("../product/qwerteeGateway.js");
 
 var product = new Product();
 var gateway = new QwerteeGateway();
-var gatewayFetchStub = sinon.stub(gateway, "fetch").returns([product]);
+var gatewayMock = sinon.mock(gateway);
 var repository = new ProductRepository();
-var repositorySaveStub = sinon.stub(repository, "save");
+var repositoryMock = sinon.mock(repository);
 var productService = new ProductService();
 
 
 describe("daily tee finder", function() {
 	it("should get daily t-shirt information from Qwertee rss and store in database", function() {
+		gatewayMock.expects("fetch").once().returns([product]);
+		repositoryMock.expects("save").once().withArgs(product);
+
 		productService.fetch();
-		
-		assert(gatewayFetchStub.calledOnce);
-		assert(repositorySaveStub.calledOnce);
-		var stubSaveCall = repository.save.getCall(0);
-		assert.equal(product.site.code, stubSaveCall.args[0].site.code);
-		assert.equal(product.site.description, stubSaveCall.args[0].site.description);
-		assert.equal(product.description, stubSaveCall.args[0].description);
-		assert.equal(product.accessURL, stubSaveCall.args[0].accessURL);
-		assert.equal(product.imageURL, stubSaveCall.args[0].imageURL);
+
+		gatewayMock.restore();
+		gatewayMock.verify();
+		repositoryMock.restore();
+		repositoryMock.verify();
 	});
 });
