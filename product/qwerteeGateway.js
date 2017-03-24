@@ -1,6 +1,6 @@
 function QwerteeGateway() {
 
-	this.fetch = function() {
+	this.getProducts = function() {
 		throw "Not implemented";
 	};
 	

@@ -1,7 +1,14 @@
-function ProductService() {
+function ProductService(qwerteeGateway, productRepository) {
+
+	this.qwerteeGateway = qwerteeGateway;
+
+	this.productRepository = productRepository;
 
 	this.fetch = function() {
-		throw "Not implemented";
+		var productList = this.qwerteeGateway.getProducts();
+        for (var index in productList) {
+            this.productRepository.save(productList[index]);
+        };
 	};
 	
 }
